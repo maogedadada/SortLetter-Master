@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SortLetterView">
+        <attr name="letterSize" format="dimension" />
+        <attr name="leftBigText" format="dimension" />
+        <attr name="paddingRight" format="dimension" />
+        <attr name="iconWidth" format="dimension" />
+        <attr name="iconHeight" format="dimension" />
+        <attr name="leftIconPadding" format="dimension" />
+        <attr name="padding" format="dimension" />
+        <attr name="letterColor" format="color" />
+        <attr name="selectLetterColor" format="color" />
+        <attr name="selectbigtTextColor" format="color" />
+        <attr name="selectBackgroundColor" format="color" />
+        <attr name="isLetterCenter" format="boolean" />
+    </declare-styleable>
+</resources>

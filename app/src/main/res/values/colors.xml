@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/allkids_red</color>
+    <color name="colorPrimaryDark">@color/allkids_red</color>
+    <color name="colorAccent">@color/allkids_red</color>
+
+    <color name="color_transparent">#00000000</color>
+    <color name="color_white">#FFFFFF</color>
+    <color name="color_black">#000000</color>
+    <color name="color_gray">#AAABAF</color>
+    <color name="color_golden">#D49A44</color>
+    <color name="color_translucency">#26000000</color>
+    <color name="color_transparent_1">#99000000</color>
+
+    <!--全局主色调-->
+    <color name="allkids_red">#FF5D5D</color>
+    <!--辅色 橘色-->
+    <color name="secondary_orange_color">#F39800</color>
+    <!--辅色 蓝色-->
+    <color name="secondary_blue_color">#576298</color>
+    <!--全局背景色-->
+    <color name="main_bg_color">#F6F6F6</color>
+    <!--全局线条颜色-->
+    <color name="line_color">#EBEBEB</color>
+    <!--偏淡的背景色-->
+    <color name="thin_bg_color">#F8F8F8</color>
+    <!--偏淡的主色调-->
+    <color name="thin_red">#ED3B3B</color>
+    <!--标题文字颜色-->
+    <color name="main_text_color">#333333</color>
+    <!--内容文字颜色-->
+    <color name="content_text_color">#666666</color>
+    <!--提示文字颜色-->
+    <color name="hint_text_color">#9A9A9A</color>
+    <!--高亮的文字颜色-->
+    <color name="highlight_text_color">#CF2C25</color>
+    <!--提示文字背景颜色-->
+    <color name="hint_bg_color">#F6F6F8</color>
+    <!--偏淡的提示文字背景颜色-->
+    <color name="thin_hint_bg_color">#B1B1B1</color>
+    <!--不可点击的背景颜色-->
+    <color name="unclick_bg_color">#E5E5E5</color>
+    <!--引导页阴影部分颜色-->
+    <color name="guide_shadow">#CC222222</color>
+    <!--直播页面默认的背景-->
+    <color name="live_common_bg">#4D000000</color>
+    <!--正在直播按钮颜色-->
+    <color name="living_btn_color">#46BA59</color>
+
+    <!--主色按钮按下后的背景色-->
+    <color name="red_btn_press_bg_color">#B9000D</color>
+    <!--白色按钮按下后的背景色-->
+    <color name="white_btn_press_bg_color">#FFF6F6</color>
+    <!--辅色(橘)按钮按下后的背景色-->
+    <color name="orange_btn_press_bg_color">#D7700B</color>
+    <!--粉色按钮默认的背景色-->
+    <color name="pink_btn_normal_bg_color">#F4DEDE</color>
+    <!--粉色按钮按下的背景色-->
+    <color name="pink_btn_press_bg_color">#ECCCCC</color>
+    <!--灰色按钮默认的背景色-->
+    <color name="gray_btn_norma_bg_color">#F9F9F9</color>
+    <!--灰色按钮按下的背景色-->
+    <color name="gray_btn_press_bg_color">#ECECEC</color>
+
+    <!-- 我的收藏 -->
+    <color name="favorite_edit_tab">#444446</color>
+    <color name="favorite_delete_btn">#d7000f</color>
+    <color name="favorite_clear_btn">#a9abae</color>
+    <color name="favorite_clear_btn_focus">#8D8F91</color>
+    <color name="favorite_delete_btn_focus">#FDA1A1</color>
+    <color name="exit_cancle_btn_default">#FF5C5D</color>
+    <color name="exit_cancle_btn_focus">#FB6C6D</color>
+    <color name="exit_ok_btn_default">#bcbec1</color>
+    <color name="exit_ok_btn_focus">#535555</color>
+
+    <!-- 播放器 -->
+    <color name="quarter3_back">#B3000000</color>
+
+    <!-- pdf 查看器 -->
+    <color name="canvas">#404040</color>
+    <color name="toolbar">#C0000000</color>
+    <color name="page_indicator">#C0202020</color>
+    <color name="busy_indicator">#C0202020</color>
+    <color name="button_normal">#00000000</color>
+    <color name="button_pressed">#FF2572AC</color>
+    <color name="text_normal">#FFFFFF</color>
+    <color name="text_pressed">#FFFFFF</color>
+    <color name="text_border_normal">#000000</color>
+    <color name="text_border_pressed">#2572AC</color>
+    <color name="text_border_focused">#000000</color>
+    <color name="seek_thumb">#2572AC</color>
+    <color name="seek_progress">#FFFFFF</color>
+    <!-- pdf 查看器 -->
+
+    <color name="def_wheel_color">#CBCBCB</color>
+    <color name="def_reached_color">#5F97EC</color>
+    <color name="def_pointer_color">#FFFFFF</color>
+
+    <color name="color_eaeaea">#eaeaea</color>
+
+    <color name="mine_name_color">#576298</color>
+
+    <color name="text_color_main">#404040</color>
+
+    <color name="text_color_title">#333333</color>
+
+    <color name="text_color_dark">#343434</color>
+
+    <color name="text_color_focus">@color/allkids_red</color>
+
+    <!-- 百分比低于或等于50%进度颜色 -->
+    <color name="progress_red">#ff5d5d</color>
+
+    <!-- 百分比大于50%小于90%进度颜色 -->
+    <color name="progress_blue">#1d87e1</color>
+
+    <!-- 百分比大于等于90%进度颜色 -->
+    <color name="progress_green">#9fbb24</color>
+
+    <color name="color_green">#2fe01c</color>
+
+    <color name="color_light_green">#268622</color>
+
+    <color name="circle_progress_color">#fefefe</color>
+
+    <color name="circle_progress_zero_color">#dddddd</color>
+
+    <color name="answer_normal">#99FFFFFF</color>
+    <color name="answer_select">#99000000</color>
+
+    <!--gray1-->
+    <color name="colorGray1">#F0F0F0</color>
+    <!--light gray-->
+    <color name="colorLightGray">#E6E6E6</color>
+    <!--gray2-->
+    <color name="colorGray2">#DCDCDC</color>
+    <!--gray3-->
+    <color name="colorGray3">#C8C8C8</color>
+    <!--gray4-->
+    <color name="colorGray4">#787878</color>
+    <!--gray5-->
+    <color name="colorGray5">#505050</color>
+    <!--gray6-->
+    <color name="colorGray6">#141414</color>
+    <!--gray7-->
+    <color name="colorGray7">#D8D8D8</color>
+
+    <color name="im_msg_color">#ffeb6b</color>
+
+    <color name="light_gray_color">#969696</color>
+
+
+    <color name="background">#F9F7F8</color>
+    <color name="background_gray1">#EBEBEB</color>
+    <color name="background_gray2">#E6E6E6</color>
+    <color name="background_gray3">#D4D4D4</color>
+    <color name="background_gray4">#EFEFF4</color>
+    <color name="line">#DDDDDD</color>
+    <color name="line_btn">#BBBBBB</color>
+    <color name="text_gray1">#777777</color>
+    <color name="text_gray2">#767676</color>
+    <color name="text_blue1">#1173CB</color>
+    <color name="text_blue2">#1173CA</color>
+    <color name="panel_black">#25272A</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="text_color">#333333</color>
+    <color name="btn_red">#D63F41</color>
+    <color name="btn_red_hover">#E8484B</color>
+    <color name="btn_blue">#0F73CB</color>
+    <color name="btn_blue_hover">#1E86E4</color>
+    <color name="btn_text">#FFFFFF</color>
+    <color name="btn_text_hover">#CCFFFFFF</color>
+    <!--蒙版-->
+    <color name="colorMask">#66000000</color>
+    <color name="transparent_black">#80000000</color>
+
+    <color name="bg_indicator_point_normal">#D8D8D8</color>
+    <color name="bg_indicator_point_selected">#A6A6A6</color>
+
+    <color name="yello">#F2DA80</color>
+    <color name="bg_course_count">#FF5D5E</color>
+    <color name="color_cdcdcd">#cdcdcd</color>
+    <color name="color_ff5d5d">#ff5d5d</color>
+    <color name="color_4192e5">#4192e5</color>
+    <color name="color_1aac70">#1aac70</color>
+    <color name="color_ff8417">#ff8417</color>
+    <color name="color_c373a2">#c373a2</color>
+    <color name="color_afa471">#afa471</color>
+    <color name="color_fafafa">#FAFAFA</color>
+    <color name="color_999999">#999999</color>
+    <color name="color_fa9f3d">#fa9f3d</color>
+    <color name="color_F6F6F6">#F6F6F6</color>
+    <color name="color_8bbe49">#8bbe49</color>
+
+    <color name="color_DA2337">#DA2337</color>
+
+    <!-- 托班颜色 -->
+    <color name="color_9561d8">#9561d8</color>
+    <color name="color_f2e6ff">#f2e6ff</color>
+    <!-- 小班颜色 -->
+    <color name="color_FFE5E5">#FFE5E5</color>
+    <!-- 中班颜色 -->
+    <color name="color_ff8800">#ff8800</color>
+    <color name="color_ffeccc">#ffeccc</color>
+    <!-- 大班颜色 -->
+    <color name="color_1f9966">#1f9966</color>
+    <color name="color_daf2e8">#daf2e8</color>
+    <!-- 学前班颜色 -->
+    <color name="color_457ae6">#457ae6</color>
+    <color name="color_e5eeff">#e5eeff</color>
+
+    <color name="color_FF6251">#FF6251</color>
+    <color name="color_FF5D5C">#FF5D5C</color>
+    <color name="color_FFD9D9">#FFD9D9</color>
+    <color name="color_FAA142">#FAA142</color>
+    <color name="color_576298">#576298</color>
+    <color name="color_FFBEBE">#FFBEBE</color>
+    <color name="color_FF6D6D">#FF6D6D</color>
+    <color name="color_E5E5E5">#E5E5E5</color>
+
+</resources>
