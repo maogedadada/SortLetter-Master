@@ -11,7 +11,7 @@
 	
 	
 	dependencies {
-	            compile 'com.github.maogedadada:qrphoto:0.0.6'
+	           implementation 'com.github.maogedadada:SortLetter-Master:1.0.3'
 	  }
 ```
  
