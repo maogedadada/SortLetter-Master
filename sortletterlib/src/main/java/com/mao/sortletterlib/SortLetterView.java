@@ -54,6 +54,12 @@ public class SortLetterView extends View {
     float leftIconPadding = Utils.dp2px(9);
     //字母上下的距离
     float letterPadding = Utils.dp2px(5);
+    //左边背景图片id
+    int backgroundIconId;
+    //左边放大字母偏移x
+    float offSetX = Utils.dp2px(2);
+    //模式选择
+    private UiMode mode = UiMode.LEFT_TEXT;
     private int mWidth;
     private int mHeight;
     private int mChoose = -1;// 选中的字母是第几个
@@ -67,6 +73,10 @@ public class SortLetterView extends View {
     private Bitmap newBmp;
     //字母触摸选中宽度范围
     private float dispatchWidth;
+
+    public enum UiMode {
+        LEFT_TEXT, RIGHT_SHPAE, BOTH
+    }
 
 
     public SortLetterView(Context context) {
@@ -94,8 +104,10 @@ public class SortLetterView extends View {
             paddingRight = a.getDimension(R.styleable.SortLetterView_paddingRight, paddingRight);
             iconWidth = a.getDimension(R.styleable.SortLetterView_iconWidth, iconWidth);
             iconHeight = a.getDimension(R.styleable.SortLetterView_iconHeight, iconHeight);
+            backgroundIconId = a.getResourceId(R.styleable.SortLetterView_backgroundIconId, 0);
             leftIconPadding = a.getDimension(R.styleable.SortLetterView_leftIconPadding, leftIconPadding);
-            letterPadding = a.getDimension(R.styleable.SortLetterView_padding, letterPadding);
+            letterPadding = a.getDimension(R.styleable.SortLetterView_letterPadding, letterPadding);
+            offSetX = a.getDimension(R.styleable.SortLetterView_offSetX, offSetX);
             mLetterColor = a.getColor(R.styleable.SortLetterView_letterColor, mLetterColor);
             mSelectLetterColor = a.getColor(R.styleable.SortLetterView_selectLetterColor, mSelectLetterColor);
             mSelectBackgroundColor = a.getColor(R.styleable.SortLetterView_selectBackgroundColor, mSelectBackgroundColor);
@@ -103,7 +115,11 @@ public class SortLetterView extends View {
             mIsLetterCenter = a.getBoolean(R.styleable.SortLetterView_isLetterCenter, mIsLetterCenter);
             a.recycle();
         }
-        mBitmap = Utils.getBitmap(getContext(), R.mipmap.shape_letter);
+        if (backgroundIconId == 0) {
+            mBitmap = Utils.getBitmap(getContext(), R.mipmap.conner);
+        } else {
+            mBitmap = Utils.getBitmap(getContext(), backgroundIconId);
+        }
         newBmp = Bitmap.createScaledBitmap(mBitmap, (int) iconWidth, (int) iconHeight, true);
 
 
@@ -136,6 +152,10 @@ public class SortLetterView extends View {
         this.letterText = letterText;
     }
 
+    public void setMode(UiMode mode) {
+        this.mode = mode;
+    }
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -161,13 +181,18 @@ public class SortLetterView extends View {
             mLetterPaint.setColor(i == mChoose ? mSelectLetterColor : mLetterColor);
             float xPos = mWidth - getPaddingRight() - letterWidth / 2 - paddingRight;
             float yPos = mHeight / mLetters.length() * (i + 1) + getPaddingTop() + iconHeight / 2;
+
             if (i == mChoose) {
+                float radius = mLetterSize - 10;
                 //选中字母圆形背景
-                canvas.drawCircle(xPos + letterWidth / 2, yPos - letterWidth / 2, mLetterSize - 10, mChooseBackgroundPaint);
-                //选中字母左边放大字母背景
-                canvas.drawBitmap(newBmp, xPos - leftIconPadding - iconWidth, yPos - letterWidth / 2 - iconHeight / 2, mLetterPaint);
-                //选中字母左边放大字母
-                canvas.drawText(letter, xPos - leftIconPadding - iconWidth / 2 - letterIconWidth / 2, yPos + letterIconWidth / 2 - letterWidth / 2, mChooseBigTextPaint);
+                canvas.drawCircle(xPos + letterWidth / 2, yPos - radius / 2, radius, mChooseBackgroundPaint);
+                if (mode == UiMode.RIGHT_SHPAE || mode == UiMode.BOTH) {
+                    //左边放大字母背景
+                    canvas.drawBitmap(newBmp, xPos - leftIconPadding - iconWidth + letterWidth / 2 - radius / 2, yPos - radius / 2 - iconHeight / 2, mLetterPaint);
+                    //左边放大字母
+                    canvas.drawText(letter, xPos - leftIconPadding - iconWidth / 2 + letterWidth / 2 - radius / 2 - letterIconWidth / 2 - offSetX,
+                            yPos + letterPadding / 2, mChooseBigTextPaint);
+                }
             }
             //所有右边边字母
             canvas.drawText(letter, xPos, yPos, mLetterPaint);
@@ -182,21 +207,21 @@ public class SortLetterView extends View {
 
         if (x < dispatchWidth) {
             mChoose = -1;
+            setTextGone();
             invalidate();
             return false;
         }
         int oldChoose = mChoose;
         if (y < getPaddingTop() || y > mHeight + getPaddingTop() + iconHeight) {
             mChoose = -1;
+            setTextGone();
         } else {
             // 点击y坐标/(总高度*数组的长度)==点击选中的个数
             mChoose = (int) ((y - getPaddingTop() - iconHeight / 2) / (mHeight) * mLetters.length());
         }
         if (event.getAction() == MotionEvent.ACTION_UP) {
             mChoose = -1;
-            if (letterText != null) {
-                letterText.setVisibility(View.INVISIBLE);
-            }
+            setTextGone();
         } else {
             try {
                 if (oldChoose != mChoose && mChoose != -1) {
@@ -205,16 +230,27 @@ public class SortLetterView extends View {
                                 mChoose + 1), mChoose);
                     }
                     if (letterText != null) {
-                        letterText.setText(mLetters.substring(mChoose, mChoose + 1));
-                        letterText.setVisibility(View.VISIBLE);
+                        if (mode == UiMode.LEFT_TEXT || mode == UiMode.BOTH) {
+                            letterText.setText(mLetters.substring(mChoose, mChoose + 1));
+                            letterText.setVisibility(View.VISIBLE);
+                        } else {
+                            setTextGone();
+                        }
                     }
                 }
             } catch (Exception e) {
                 mChoose = -1;
+                setTextGone();
                 e.printStackTrace();
             }
         }
         invalidate();
         return super.dispatchTouchEvent(event);
+    }
+
+    private void setTextGone() {
+        if (letterText != null) {
+            letterText.setVisibility(View.INVISIBLE);
+        }
     }
 }

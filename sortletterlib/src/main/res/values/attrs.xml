@@ -7,7 +7,9 @@
         <attr name="iconWidth" format="dimension" />
         <attr name="iconHeight" format="dimension" />
         <attr name="leftIconPadding" format="dimension" />
-        <attr name="padding" format="dimension" />
+        <attr name="letterPadding" format="dimension" />
+        <attr name="offSetX" format="dimension" />
+        <attr name="backgroundIconId" format="reference" />
         <attr name="letterColor" format="color" />
         <attr name="selectLetterColor" format="color" />
         <attr name="selectbigtTextColor" format="color" />

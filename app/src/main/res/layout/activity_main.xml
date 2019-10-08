@@ -9,8 +9,8 @@
 
     <TextView
         android:id="@+id/centerText"
-        android:layout_width="66dp"
-        android:layout_height="66dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_centerInParent="true"
         android:background="#66000000"
         android:gravity="center"
@@ -30,7 +30,8 @@
         app:letterSize="15sp"
         app:leftBigText="26sp"
         app:paddingRight="20dp"
-        app:iconHeight="49dp"
-        app:iconWidth="58dp" />
+        app:backgroundIconId="@mipmap/shape_letter"
+        app:offSetX="4dp"
+        />
 
 </RelativeLayout>

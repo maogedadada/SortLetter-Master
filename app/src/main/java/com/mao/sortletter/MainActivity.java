@@ -8,7 +8,6 @@ import android.widget.TextView;
 import com.mao.sortletterlib.SortLetterView;
 
 
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -18,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
         TextView centerText = findViewById(R.id.centerText);
         SortLetterView letterView = findViewById(R.id.sort_view);
 //        letterView.setLetters("sfsdfsfsdfsd");
+        letterView.setMode(SortLetterView.UiMode.BOTH);
         letterView.setLetterText(centerText);
         letterView.setOnLetterChangedListener(new SortLetterView.OnLetterChangedListener() {
             @Override
