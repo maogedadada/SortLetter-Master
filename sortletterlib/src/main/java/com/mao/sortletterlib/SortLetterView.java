@@ -59,7 +59,7 @@ public class SortLetterView extends View {
     //左边放大字母偏移x
     float offSetX = Utils.dp2px(2);
     //模式选择
-    private UiMode mode = UiMode.LEFT_TEXT;
+    private UiMode mode = UiMode.BOTH;
     private int mWidth;
     private int mHeight;
     private int mChoose = -1;// 选中的字母是第几个
