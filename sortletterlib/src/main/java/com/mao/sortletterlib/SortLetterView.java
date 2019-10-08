@@ -57,7 +57,7 @@ public class SortLetterView extends View {
     //左边背景图片id
     int backgroundIconId;
     //左边放大字母偏移x
-    float offSetX = Utils.dp2px(2);
+    float offSetX = Utils.dp2px(4);
     //模式选择
     private UiMode mode = UiMode.BOTH;
     private int mWidth;
@@ -116,7 +116,7 @@ public class SortLetterView extends View {
             a.recycle();
         }
         if (backgroundIconId == 0) {
-            mBitmap = Utils.getBitmap(getContext(), R.mipmap.conner);
+            mBitmap = Utils.getBitmap(getContext(), R.mipmap.shape_letter);
         } else {
             mBitmap = Utils.getBitmap(getContext(), backgroundIconId);
         }
