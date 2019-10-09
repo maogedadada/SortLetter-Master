@@ -41,9 +41,7 @@ public class SortLetterView extends View {
     // 字母默认字体大小
     float mLetterSize = Utils.dp2px(12);
     //  被选中的左边大字母大小
-    float leftBigText = Utils.dp2px(26);
-    //是否字母是居中显示
-    boolean mIsLetterCenter;
+    float leftBigTextSize = Utils.dp2px(26);
     //右边间距
     float paddingRight = Utils.dp2px(12);
     //左边选中放大背景图片宽度
@@ -67,7 +65,7 @@ public class SortLetterView extends View {
     private Paint mChooseBackgroundPaint;//选中字母圆形背景画笔
     private Paint mChooseBigTextPaint;//选中字母放大画笔
     private TextView letterText;//显示当前字母的textview
-    private String mLetters = "#ABCDEFGHIJKLMNOPQRSTUVWXYZ";//默认字符
+    private String mLetters = "8ABCDEFGHIJKLMNOPQRSTUVWXYZ";//默认字符
     private OnLetterChangedListener mLetterChangedListener;// 触摸字母改变事件
     private Bitmap mBitmap;
     private Bitmap newBmp;
@@ -100,7 +98,7 @@ public class SortLetterView extends View {
             TypedArray a = context.obtainStyledAttributes(attrs, R.styleable
                     .SortLetterView, 0, 0);
             mLetterSize = a.getDimension(R.styleable.SortLetterView_letterSize, mLetterSize);
-            leftBigText = a.getDimension(R.styleable.SortLetterView_leftBigText, leftBigText);
+            leftBigTextSize = a.getDimension(R.styleable.SortLetterView_leftBigText, leftBigTextSize);
             paddingRight = a.getDimension(R.styleable.SortLetterView_paddingRight, paddingRight);
             iconWidth = a.getDimension(R.styleable.SortLetterView_iconWidth, iconWidth);
             iconHeight = a.getDimension(R.styleable.SortLetterView_iconHeight, iconHeight);
@@ -112,11 +110,10 @@ public class SortLetterView extends View {
             mSelectLetterColor = a.getColor(R.styleable.SortLetterView_selectLetterColor, mSelectLetterColor);
             mSelectBackgroundColor = a.getColor(R.styleable.SortLetterView_selectBackgroundColor, mSelectBackgroundColor);
             mSelectbigtTextColor = a.getColor(R.styleable.SortLetterView_selectbigtTextColor, mSelectbigtTextColor);
-            mIsLetterCenter = a.getBoolean(R.styleable.SortLetterView_isLetterCenter, mIsLetterCenter);
             a.recycle();
         }
         if (backgroundIconId == 0) {
-            mBitmap = Utils.getBitmap(getContext(), R.mipmap.shape_letter);
+            mBitmap = Utils.getBitmap(getContext(), R.mipmap.conner);
         } else {
             mBitmap = Utils.getBitmap(getContext(), backgroundIconId);
         }
@@ -129,12 +126,11 @@ public class SortLetterView extends View {
 
 
         mChooseBackgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mChooseBackgroundPaint.setTypeface(Typeface.DEFAULT);
         mChooseBackgroundPaint.setAntiAlias(true);
         mChooseBackgroundPaint.setColor(mSelectBackgroundColor);
 
         mChooseBigTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mChooseBigTextPaint.setTextSize(leftBigText);
+        mChooseBigTextPaint.setTextSize(leftBigTextSize);
         mChooseBigTextPaint.setTypeface(Typeface.DEFAULT_BOLD);
         mChooseBigTextPaint.setAntiAlias(true);
         mChooseBigTextPaint.setColor(mSelectbigtTextColor);
@@ -191,7 +187,7 @@ public class SortLetterView extends View {
                     canvas.drawBitmap(newBmp, xPos - leftIconPadding - iconWidth + letterWidth / 2 - radius / 2, yPos - radius / 2 - iconHeight / 2, mLetterPaint);
                     //左边放大字母
                     canvas.drawText(letter, xPos - leftIconPadding - iconWidth / 2 + letterWidth / 2 - radius / 2 - letterIconWidth / 2 - offSetX,
-                            yPos + letterPadding / 2, mChooseBigTextPaint);
+                            yPos - radius + leftBigTextSize / 2, mChooseBigTextPaint);
                 }
             }
             //所有右边边字母

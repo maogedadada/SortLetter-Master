@@ -26,12 +26,13 @@
         app:letterColor="@color/colorAccent"
         app:selectLetterColor="@color/yello"
         app:selectBackgroundColor="@color/black"
-        app:selectbigtTextColor="@color/btn_blue"
+        app:selectbigtTextColor="@color/black"
+        app:iconHeight="49dp"
+        app:iconWidth="58dp"
         app:letterSize="15sp"
-        app:leftBigText="26sp"
+        app:leftBigText="30sp"
         app:paddingRight="20dp"
         app:backgroundIconId="@mipmap/shape_letter"
-        app:offSetX="4dp"
-        />
+        app:offSetX="4dp" />
 
 </RelativeLayout>
