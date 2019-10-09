@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -65,7 +66,7 @@ public class SortLetterView extends View {
     private Paint mChooseBackgroundPaint;//选中字母圆形背景画笔
     private Paint mChooseBigTextPaint;//选中字母放大画笔
     private TextView letterText;//显示当前字母的textview
-    private String mLetters = "8ABCDEFGHIJKLMNOPQRSTUVWXYZ";//默认字符
+    private String mLetters = "#ABCDEFGHIJKLMNOPQRSTUVWXYZ";//默认字符
     private OnLetterChangedListener mLetterChangedListener;// 触摸字母改变事件
     private Bitmap mBitmap;
     private Bitmap newBmp;
@@ -121,15 +122,18 @@ public class SortLetterView extends View {
 
 
         mLetterPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mLetterPaint.setTextAlign(Paint.Align.CENTER);
         mLetterPaint.setTextSize(mLetterSize);
         mLetterPaint.setAntiAlias(true);
 
 
         mChooseBackgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mChooseBackgroundPaint.setTextAlign(Paint.Align.CENTER);
         mChooseBackgroundPaint.setAntiAlias(true);
         mChooseBackgroundPaint.setColor(mSelectBackgroundColor);
 
         mChooseBigTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mChooseBigTextPaint.setTextAlign(Paint.Align.CENTER);
         mChooseBigTextPaint.setTextSize(leftBigTextSize);
         mChooseBigTextPaint.setTypeface(Typeface.DEFAULT_BOLD);
         mChooseBigTextPaint.setAntiAlias(true);
@@ -172,22 +176,32 @@ public class SortLetterView extends View {
     protected void onDraw(Canvas canvas) {
         for (int i = 0; i < mLetters.length(); i++) {
             String letter = mLetters.substring(i, i + 1);
-            float letterWidth = mLetterPaint.measureText(letter);
-            float letterIconWidth = mChooseBigTextPaint.measureText(letter);
             mLetterPaint.setColor(i == mChoose ? mSelectLetterColor : mLetterColor);
-            float xPos = mWidth - getPaddingRight() - letterWidth / 2 - paddingRight;
+            float xPos = mWidth - getPaddingRight() - paddingRight;
             float yPos = mHeight / mLetters.length() * (i + 1) + getPaddingTop() + iconHeight / 2;
 
             if (i == mChoose) {
                 float radius = mLetterSize - 10;
                 //选中字母圆形背景
-                canvas.drawCircle(xPos + letterWidth / 2, yPos - radius / 2, radius, mChooseBackgroundPaint);
+                canvas.drawCircle(xPos, yPos - radius / 2, radius, mChooseBackgroundPaint);
                 if (mode == UiMode.RIGHT_SHPAE || mode == UiMode.BOTH) {
+
+
                     //左边放大字母背景
-                    canvas.drawBitmap(newBmp, xPos - leftIconPadding - iconWidth + letterWidth / 2 - radius / 2, yPos - radius / 2 - iconHeight / 2, mLetterPaint);
+                    canvas.drawBitmap(newBmp, xPos - leftIconPadding - iconWidth - radius / 2,
+                            yPos - radius / 2 - iconHeight / 2, mLetterPaint);
                     //左边放大字母
-                    canvas.drawText(letter, xPos - leftIconPadding - iconWidth / 2 + letterWidth / 2 - radius / 2 - letterIconWidth / 2 - offSetX,
-                            yPos - radius + leftBigTextSize / 2, mChooseBigTextPaint);
+                    Paint.FontMetrics fontMetrics = mChooseBigTextPaint.getFontMetrics();
+                    float distance = (fontMetrics.bottom - fontMetrics.top) / 2 - fontMetrics.bottom;
+
+
+                    RectF rectF = new RectF(xPos - leftIconPadding - iconWidth - radius / 2, yPos - radius / 2 - iconHeight / 2,
+                            xPos - leftIconPadding - radius / 2, yPos - radius / 2 + iconHeight / 2);
+                    float baseline = rectF.centerY() + distance;
+                    canvas.drawText(letter, rectF.centerX()-offSetX, baseline, mChooseBigTextPaint);
+
+//                    canvas.drawText(letter, xPos - leftIconPadding - iconWidth / 2 - radius / 2 -offSetX,
+//                            yPos - radius / 2 - iconHeight / 2, mChooseBigTextPaint);
                 }
             }
             //所有右边边字母
