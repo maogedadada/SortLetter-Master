@@ -11,7 +11,7 @@
 	
 	
 	dependencies {
-	           implementation 'com.github.maogedadada:SortLetter-Master:1.0.8'
+	           implementation 'com.github.maogedadada:SortLetter-Master:1.0.9'
 	  }
 ```
  
